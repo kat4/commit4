@@ -10,6 +10,12 @@ This will be useful for project management and code reviewing. If you want to vi
 
 You'll also be able to see how much code was changed on it each commit.
 
+###How?
+Users will enter their repo name, owner name and branch.
+The app will make an API call to github get the commit history and display each file from a commit as a unique coloured dot.
+Coloured dots will be highlighted when clicked to show the thread of changes to that file.
+See the wireframes below for an idea of how this will look.
+
 ####Wireframes
 
 ![Logo](https://files.gitter.im/kat4/fac6d1/T5nz/commit4.png)
