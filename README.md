@@ -1,5 +1,5 @@
 # commit4
-data visualisation app for the commits in your repo
+Data visualisation app for the commits in your repo
 
 We would like to create an app which lets you visualise the size of the changes in commit that has been made and compare the changes in the number and size of files as the project goes on.
 
