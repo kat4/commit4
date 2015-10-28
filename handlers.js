@@ -1,3 +1,6 @@
+var fs = require('fs');
+var index = fs.readFileSync('./views/index.html');
+
 var handlers = module.exports = {};
 
 var headers = {
@@ -6,7 +9,7 @@ var headers = {
 
 handlers.home = function(req, res){
     res.writeHead(200, headers);
-    res.end("Hello World");
+    res.end(index);
 };
 
 handlers.notFound = function(req, res){
@@ -17,6 +20,7 @@ handlers.notFound = function(req, res){
 handlers.general = function(req, res) {
   fs.readFile("./public" + req.url, function(err, file) {
         if (err) {
+          console.log('errrr', err);
           handlers.notFound(req, res);
         } else {
             var ext = req.url.split(".")[1];
