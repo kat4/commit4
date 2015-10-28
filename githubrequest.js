@@ -22,26 +22,22 @@ var requestCommitHistory = https.request(options, function(res) {
 
     JSON.parse(body).forEach(function(commit) {
       //console.log(commit);
-      console.log(commit.sha);
-      console.log(commit.committer.login);
-      console.log(commit.committer.avatar_url);
-      console.log(commit.commit.committer.date);
-      console.log(commit.committer.id);
 
       commitHistory[commit.commit.committer.date] = {
         author:{
           username: commit.committer.login,
           avatar: commit.committer.avatar_url
         },
-        files:{
-
-        }
+        files:[],
+        sha: commit.sha,
+        date: commit.commit.committer.date
       };
-      console.log(commitHistory);
+
       options.path = '/repos/kat4/commit4/commits/'+commit.sha+'?' + qs.stringify(credentials);
       var getCommitDetails = https.request(options, function(res) {
         parseBody(res,function(body){
-          //console.log(JSON.parse(body).files);
+          commitHistory[commit.commit.committer.date].files = JSON.parse(body).files;
+          console.log(commitHistory);
         });
       });
       getCommitDetails.end();
