@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kat4/commit4/issues"
   },
-  "homepage": "https://github.com/kat4/commit4#readme"
+  "homepage": "https://github.com/kat4/commit4#readme",
+  "devDependencies": {
+    "env2": "^2.0.4"
+  }
 }
