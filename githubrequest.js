@@ -17,16 +17,27 @@ var options = {
 };
 
 var requestCommitHistory = https.request(options, function(res) {
-
+  var commitHistory = {};
   parseBody(res, function(body) {
 
     JSON.parse(body).forEach(function(commit) {
+      //console.log(commit);
 
-      console.log(commit.sha);
+      commitHistory[commit.commit.committer.date] = {
+        author:{
+          username: commit.committer.login,
+          avatar: commit.committer.avatar_url
+        },
+        files:[],
+        sha: commit.sha,
+        date: commit.commit.committer.date
+      };
+
       options.path = '/repos/kat4/commit4/commits/'+commit.sha+'?' + qs.stringify(credentials);
       var getCommitDetails = https.request(options, function(res) {
         parseBody(res,function(body){
-          console.log(JSON.parse(body).files);
+          commitHistory[commit.commit.committer.date].files = JSON.parse(body).files;
+          console.log(commitHistory);
         });
       });
       getCommitDetails.end();

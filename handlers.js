@@ -12,6 +12,12 @@ handlers.home = function(req, res){
     res.end(index);
 };
 
+handlers.commit4 = function(req, res){
+    var owner = req.url.split("/")[2];
+    var repo = req.url.split("/")[3];
+    res.end('hello');
+};
+
 handlers.notFound = function(req, res){
     res.writeHead(404, headers);
     res.end('Resource not found');
