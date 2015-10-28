@@ -1,0 +1,19 @@
+{
+  "name": "commit4",
+  "version": "1.0.0",
+  "description": "Data visualisation app for the commits in your repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kat4/commit4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kat4/commit4/issues"
+  },
+  "homepage": "https://github.com/kat4/commit4#readme"
+}
