@@ -1,5 +1,7 @@
 var fs = require('fs');
 var index = fs.readFileSync('./views/index.html');
+var commits = fs.readFileSync('./views/commits.html');
+var githubHandler = require('./githubrequest.js');
 
 var handlers = module.exports = {};
 
@@ -10,6 +12,10 @@ var headers = {
 handlers.home = function(req, res){
     res.writeHead(200, headers);
     res.end(index);
+};
+
+handlers.commit4 = function(req, res){
+    githubHandler(req,res);
 };
 
 handlers.notFound = function(req, res){
