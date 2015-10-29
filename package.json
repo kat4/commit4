@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/tape ./tests/*",
     "start": "node server.js",
     "coverage": "istanbul cover ./node_modules/.bin/tape ./tests/*",
-    "codeclimate": "CODECLIMATE_REPO_TOKEN=aafdb4cd2a56c924382225871cb0cd76665783101628712fb46ba335266c267b codeclimate-test-reporter < lcov.info"
+    "codeclimate": "CODECLIMATE_REPO_TOKEN=aafdb4cd2a56c924382225871cb0cd76665783101628712fb46ba335266c267b codeclimate-test-reporter < ./coverage/lcov.info"
   },
   "repository": {
     "type": "git",
