@@ -5,88 +5,144 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" href="/css/commits.css">
+
+  <style>
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-color: beige;
+      float: left;
+      margin-right: 20px;
+    }
+    .file:hover{
+      opacity: 0.8;
+      transition: opacity 0.3 ease-in-out;
+      -webkit-transition: opacity 0.3 ease-in-out;
+    }
+    .file {
+      cursor: pointer;
+      opacity: 0.4;
+      transition: opacity 0.3 ease-in-out;
+      -webkit-transition: opacity 0.3 ease-in-out;
+
+    }
+    .commit {
+      clear: both;
+      float: left;
+    }
+
+    .highlight {
+      background-color: rgba(34, 94, 200, 0.4);
+      opacity: 0.9;
+    }
+
+    .active {
+      background-color: rgba(34, 94, 200, 0.9);
+      opacity: 1;
+    }
+  </style>
 </head>
+
+
 
 <body>
   <h1>Hello World</h1>
   <div id="commits-container">
-    <!-- <div class="commit" data-sha="">
-      <div class="author">
+    <div class="commit" data-sha="">
+      <header>
+        <span class="author-login">Author login</span>
+        <span class="commit-date">Date of commit</span>
+      </header>
+      <div class="avatar circle" style="background-image: url('https://avatars.githubusercontent.com/u/7438594?v=3')"></div>
+      <div class="file circle" data-filename="views/commits.html" data-changes="30" data-added="30" data-deleted="0">
       </div>
-      <div class="file" data-filename="">
+      <div class="file circle" data-filename="views/index.html" data-changes="20" data-added="5" data-deleted="15">
       </div>
-      <div class="file" data-filename="">
+      <div class="file circle" data-filename="public/js/main.js" data-changes="25" data-added="22" data-deleted="3">
       </div>
-      <div class="file" data-filename="">
+      <div class="file circle" data-filename="server.js" data-changes="10" data-added="6" data-deleted="4">
       </div>
     </div>
     <div class="commit" data-sha="">
-      <div class="author">
+      <header>
+        <span class="author-login">Author login</span>
+        <span class="commit-date">Date of commit</span>
+      </header>
+      <div class="avatar circle" style="background-image: url('https://avatars.githubusercontent.com/u/7438594?v=3')"></div>
+      <div class="file circle" data-filename="views/commits.html" data-changes="30" data-added="30" data-deleted="0">
       </div>
-      <div class="file" data-filename="">
+      <div class="file circle" data-filename="views/index.html" data-changes="20" data-added="5" data-deleted="15">
       </div>
-      <div class="file" data-filename="">
+      <div class="file circle" data-filename="public/js/main.js" data-changes="25" data-added="22" data-deleted="3">
       </div>
-      <div class="file" data-filename="">
+      <div class="file circle" data-filename="server.js" data-changes="10" data-added="6" data-deleted="4">
       </div>
     </div>
     <div class="commit" data-sha="">
-      <div class="author">
+      <header>
+        <span class="author-login">Author login</span>
+        <span class="commit-date">Date of commit</span>
+      </header>
+      <div class="avatar circle" style="background-image: url('https://avatars.githubusercontent.com/u/7438594?v=3')"></div>
+      <div class="file circle" data-filename="views/commits.html" data-changes="30" data-added="30" data-deleted="0">
       </div>
-      <div class="file" data-filename="">
+      <div class="file circle" data-filename="views/index.html" data-changes="20" data-added="5" data-deleted="15">
       </div>
-      <div class="file" data-filename="">
+      <div class="file circle" data-filename="public/js/main.js" data-changes="25" data-added="22" data-deleted="3">
       </div>
-      <div class="file" data-filename="">
+      <div class="file circle" data-filename="server.js" data-changes="10" data-added="6" data-deleted="4">
       </div>
-    </div> -->
+    </div>
+  </div>
   </div>
 
   <script>
-    // function makeClickHandlers() {
-    //
-    //   var elems_array = document.getElementsByClassName("file"),
-    //     i;
-    //
-    //
-    //   for (i = 0; i < elems_array.length; i++) {
-    //     elems_array[i].addEventListener("click", highlightSelectedFile(i));
-    //   }
-    // }
-    //
-    // function highlightSelectedFile(i) {
-    //   return function() {
-    //     var arrayOfFileInstances = getAllElementsWithAttribute(attribute);
-    //     var j;
-    //     for (j = 0; j < arrayOfFileInstances.length; j++)
-    //       if (i != j) {
-    //         document.getElementsByClassName("")[j].style.display = "none";
-    //       } else {
-    //         document.getElementsByClassName("")[j].style.display = "block";
-    //       }
-    //   };
-    // }
-    //
-    // function getAllElementsWithAttribute(attribute) {
-    //   var matchingElements = [];
-    //   var allElements = document.getElementsByTagName('*');
-    //   for (var i = 0, n = allElements.length; i < n; i++) {
-    //     if (allElements[i].getAttribute(attribute) !== null) {
-    //       matchingElements.push(allElements[i]);
-    //     }
-    //   }
-    //   return matchingElements;
-    // }
-    //
-    //
-    //
-    //
-    // for (var i = 0; i < suggestionList.length; i++) {
-    //   if (i !== activeWordIndex) {
-    //     suggestionList[i].classList.remove("active");
-    //   } else {
-    //     suggestionList[i].classList.add("active");
-    //   }
+    var colours = [
+      '#ff0',
+      '#36d6d6',
+      '#00f',
+      '#f00',
+      '#8927d8',
+      '#297f0b',
+      '#cf9465',
+      '#5f55de',
+      '#66b5d3',
+      '#66374a',
+      '#ff7f00',
+      '#f238a5',
+      '#09b259',
+      '#e3d309'
+    ];
+    var fileColours = {};
+
+    var fileElements = document.getElementsByClassName('file');
+    for (var i = 0; i < fileElements.length; i++) {
+      var filename = fileElements[i].dataset.filename;
+      if(!fileColours.hasOwnProperty(filename)){
+        console.log(fileColours);
+        fileColours[filename] = colours[0];
+        colours.shift();
+      }
+      fileElements[i].style.backgroundColor=fileColours[filename];
+      fileElements[i].addEventListener('click', highlightFiles);
+    }
+
+    function highlightFiles(event) {
+      var targetElement = event.target || event.srcElement;
+      var filename = targetElement.dataset.filename;
+      for (var i = 0; i < fileElements.length; i++) {
+        fileElements[i].classList.remove('highlight');
+        fileElements[i].classList.remove('active');
+        if (fileElements[i].dataset.filename === filename) {
+          fileElements[i].classList.add('highlight');
+        }
+      }
+      targetElement.classList.add('active');
+    }
   </script>
 </body>
 

@@ -1,30 +1,37 @@
-h1{
-  color: red
-}
-
-#commits-container {
-  margin: 20px auto;
-  width: 100%;
-}
-
-.commit {
-  margin-top: 40px;
-}
-
-.author{
-  width: 50px;
-	height: 50px;
-	background: red;
-  display: inline-block;
-  margin-right: 50px;
-}
-
-
-.file {
-  width: 50px;
-  height: 50px;
-  margin-right: 25px;
-  background: blue;
+.circle {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: beige;
+  float: left;
+  margin-right: 20px;
+}
+.file:hover{
+  opacity: 0.8;
+  transition: opacity 0.3 ease-in-out;
+  -webkit-transition: opacity 0.3 ease-in-out;
+}
+.file {
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.3 ease-in-out;
+  -webkit-transition: opacity 0.3 ease-in-out;
+
+}
+.commit {
+  clear: both;
+  float: left;
+}
+
+.highlight {
+  background-color: rgba(34, 94, 200, 0.4);
+  opacity: 0.9;
+}
+
+.active {
+  background-color: rgba(34, 94, 200, 0.9);
+  opacity: 1;
 }
