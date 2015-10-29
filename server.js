@@ -1,7 +1,7 @@
 var http = require('http');
 var https = require('https');
 var router = require('./router.js');
-var port = process.env.port || 7777;
+var port = process.env.PORT || 7777;
 
 var server = function(req, res) {
   router(req, res);
