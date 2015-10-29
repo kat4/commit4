@@ -57,7 +57,12 @@ var githubHandler = function(req, res) {
   function addCommitFilesToHistoryObject(unparsedFileArray, commit) {
 
     parseBody(unparsedFileArray, function(parsedFileArray) {
-      commitHistory[commit.commit.committer.date].files = JSON.parse(parsedFileArray).files;
+      parsedFileArray = JSON.parse(parsedFileArray);
+      parsedFileArray.files.forEach(function(file,index){
+        delete file.patch;
+        parsedFileArray.files[index] = file;
+      });
+      commitHistory[commit.commit.committer.date].files = parsedFileArray.files;
       if (++i === Object.keys(commitHistory).length) {
         res.writeHead(200, {
           "Content-Type": "application/json"
