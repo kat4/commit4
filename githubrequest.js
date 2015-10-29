@@ -4,10 +4,9 @@ var env = require('env2')('./config.env');
 
 
 var githubHandler = function(req, res) {
-  var query = qs.parse(req.url);
-  console.log(query);
-  var owner = query.owner;
-  var repo = query.repo;
+  var query = req.url.split('/');
+  var owner = query[2];
+  var repo = query[3];
   var credentials = {
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET
@@ -31,8 +30,8 @@ var githubHandler = function(req, res) {
   requestCommitHistory.end();
 
   function getCommitsfromHistory(unparsedCommitHistory) {
-    parseBody(unparsedCommitHistory, function(body) {
-      JSON.parse(body).forEach(addCommitToHistoryObject);
+    parseBody(unparsedCommitHistory, function(arrayOfCommits) {
+      JSON.parse(arrayOfCommits).forEach(addCommitToHistoryObject);
     });
   }
 
@@ -47,7 +46,7 @@ var githubHandler = function(req, res) {
       date: commit.commit.committer.date
     };
 
-    options.path = '/repos/kat4/commit4/commits/' + commit.sha + '?' + qs.stringify(credentials);
+    options.path = '/repos/'+owner+'/'+repo+'/commits/' + commit.sha + '?' + qs.stringify(credentials);
 
     var getCommitDetails = https.request(options, function(unparsedFileArray) {
       addCommitFilesToHistoryObject(unparsedFileArray, commit);
@@ -57,8 +56,8 @@ var githubHandler = function(req, res) {
 
   function addCommitFilesToHistoryObject(unparsedFileArray, commit) {
 
-    parseBody(unparsedFileArray, function(body) {
-      commitHistory[commit.commit.committer.date].files = JSON.parse(body).files;
+    parseBody(unparsedFileArray, function(parsedFileArray) {
+      commitHistory[commit.commit.committer.date].files = JSON.parse(parsedFileArray).files;
       if (++i === Object.keys(commitHistory).length) {
         res.writeHead(200, {
           "Content-Type": "application/json"
@@ -78,4 +77,21 @@ var githubHandler = function(req, res) {
       callback(body);
     });
   }
+
 };
+
+
+var sampleRequest = {
+  url:'/commit4/kat4/commit4'
+};
+
+var sampleRes = {
+  writeHead: function(a,b){},
+  end: console.log
+};
+
+
+// githubHandler(sampleRequest,sampleRes);
+
+
+module.exports = githubHandler;
