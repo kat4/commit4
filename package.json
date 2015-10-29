@@ -4,7 +4,10 @@
   "description": "Data visualisation app for the commits in your repo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/tape ./tests/*",
+    "start": "node server.js",
+    "coverage": "istanbul cover ./node_modules/.bin/tape ./tests/*",
+    "codeclimate": "CODECLIMATE_REPO_TOKEN=aafdb4cd2a56c924382225871cb0cd76665783101628712fb46ba335266c267b codeclimate-test-reporter < lcov.info"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,10 @@
   },
   "homepage": "https://github.com/kat4/commit4#readme",
   "devDependencies": {
-    "env2": "^2.0.4"
+    "codeclimate-test-reporter": "^0.1.1",
+    "env2": "^2.0.4",
+    "istanbul": "^0.4.0",
+    "shot": "^1.7.0",
+    "tape": "^4.2.2"
   }
 }

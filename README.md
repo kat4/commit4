@@ -1,5 +1,12 @@
 # commit4
 
+[![Codecrystal](https://img.shields.io/badge/code-crystal-5CB3FF.svg)](http://codecrystal.herokuapp.com/crystalise/kat4/commit4/master)
+[![Code Climate](https://codeclimate.com/github/kat4/commit4/badges/gpa.svg)](https://codeclimate.com/github/kat4/commit4)
+
+
+[![bitHound Score](https://www.bithound.io/github/kat4/commit4/badges/score.svg)](https://www.bithound.io/github/kat4/commit4)
+
+
 ###What?
 A data visualisation app for the commits in your repo, visit us here: [TK]
 
@@ -23,6 +30,3 @@ See the wireframes below for an idea of how this will look.
 ![Wirefame](https://files.gitter.im/kat4/fac6d1/dXaa/wireframefinale.png)
 
 ![Wireframe](https://files.gitter.im/kat4/fac6d1/49DR/wireframe.png)
-
-
-
