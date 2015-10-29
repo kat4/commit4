@@ -1,13 +1,12 @@
 .circle {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-color: beige;
   float: left;
-  margin-right: 20px;
 }
 .file:hover{
   opacity: 0.8;

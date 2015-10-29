@@ -28,8 +28,8 @@ function renderHTML(commitHistory) {
     });
 
     Partials.commit += '<div class="commit" data-sha="' + commitHistory[key]
-    + '"><div class="avatar circle" style="background-image:url("' + commitHistory[key].author.avatar
-    + '")" "author="' + commitHistory[key].author.username
+    + '"><div class="avatar circle" style="background-image:url(\'' + commitHistory[key].author.avatar
+    + '\')" "author="' + commitHistory[key].author.username
     + '</div>' + commitFiles;
   });
 
