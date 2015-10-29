@@ -18,23 +18,33 @@ function renderHTML(commitHistory) {
   };
 
 
-  Object.keys(commitHistory).forEach(function (key) {
+  Object.keys(commitHistory).forEach(function(key) {
     var commitFiles = '';
-    commitHistory[key].files.forEach(function (file) {
-      commitFiles += '<div class="file circle" data-filename="'+ file.filename
-      +'" data-changes="' + file.changes
-      + '" data-added="'+ file.additions
-      +'" data-deleted="'+file.deletions+'"></div>'
+    commitHistory[key].files.forEach(function(file) {
+      var percentAdded = file.additions / file.changes * 100;
+      var percentDeleted = file.deletions / file.changes * 100;
+      commitFiles += '<div class="file circle" data-filename="' + file.filename + '" data-changes="' + file.changes + '" data-added="' + file.additions + '" data-deleted="' + file.deletions + '"><div class="file-stats"><div class="added" style="height:' + percentAdded + '%;">' +
+        file.additions +
+        '</div><div class="deleted" style="height:' + percentDeleted + '%;">' +
+        file.deletions +
+        '</div></div></div>'
     });
 
-    Partials.commit += '<div class="commit" data-sha="' + commitHistory[key]
-    + '"><div class="avatar circle" style="background-image:url(\'' + commitHistory[key].author.avatar
-    + '\')" "author="' + commitHistory[key].author.username
-    + '</div>' + commitFiles;
+    Partials.commit += '<div class="commit" data-sha="' +
+      commitHistory[key] +
+      '">'+
+      '<div class="avatar circle" style="background-image:url(\'' +
+      commitHistory[key].author.avatar +
+      '\')" data-author="' +
+      commitHistory[key].author.username +
+      '"></div>' +
+      commitFiles +
+      '</div>';
+
   });
 
   var commitHistoryHTML = Partials.header + Partials.commitContainerOpen +
-  Partials.commit+ Partials.commitContainerClose+ Partials.scripts + Partials.footer;
+    Partials.commit + Partials.commitContainerClose + Partials.scripts + Partials.footer;
 
 
   return commitHistoryHTML;
