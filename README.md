@@ -2,8 +2,7 @@
 
 [![Codecrystal](https://img.shields.io/badge/code-crystal-5CB3FF.svg)](http://codecrystal.herokuapp.com/crystalise/kat4/commit4/master)
 [![Code Climate](https://codeclimate.com/github/kat4/commit4/badges/gpa.svg)](https://codeclimate.com/github/kat4/commit4)
-
-
+[![Test Coverage](https://codeclimate.com/github/kat4/commit4/badges/coverage.svg)](https://codeclimate.com/github/kat4/commit4/coverage)
 [![bitHound Score](https://www.bithound.io/github/kat4/commit4/badges/score.svg)](https://www.bithound.io/github/kat4/commit4)
 
 
