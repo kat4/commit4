@@ -1,5 +1,7 @@
 var fs = require('fs');
 var index = fs.readFileSync('./views/index.html');
+var commits = fs.readFileSync('./views/commits.html');
+var githubHandler = require('./githubrequest.js');
 
 var handlers = module.exports = {};
 
@@ -13,9 +15,7 @@ handlers.home = function(req, res){
 };
 
 handlers.commit4 = function(req, res){
-    var owner = req.url.split("/")[2];
-    var repo = req.url.split("/")[3];
-    res.end('hello');
+    githubHandler(req,res);
 };
 
 handlers.notFound = function(req, res){
