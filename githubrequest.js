@@ -1,7 +1,7 @@
 var https = require('https');
 var qs = require('querystring');
 var env = require('env2')('./config.env');
-
+var renderHTML = require('./partials.js');
 
 var githubHandler = function(req, res) {
   var query = req.url.split('/');
@@ -65,9 +65,10 @@ var githubHandler = function(req, res) {
       commitHistory[commit.commit.committer.date].files = parsedFileArray.files;
       if (++i === Object.keys(commitHistory).length) {
         res.writeHead(200, {
-          "Content-Type": "application/json"
+          "Content-Type": "text/html"
         });
-        res.end(JSON.stringify(commitHistory));
+
+        res.end(renderHTML(commitHistory));
       }
     });
   }
