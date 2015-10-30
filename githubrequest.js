@@ -14,7 +14,7 @@ var githubHandler = function(req, res) {
   var options = {
     host: 'api.github.com',
     method: 'GET',
-    path: '/repos/'+owner+'/'+repo+'/commits?' + qs.stringify(credentials),
+    path: '/repos/' + owner + '/' + repo + '/commits?' + qs.stringify(credentials),
     headers: {
       'User-agent': 'commit4'
     }
@@ -31,7 +31,11 @@ var githubHandler = function(req, res) {
 
   function getCommitsfromHistory(unparsedCommitHistory) {
     parseBody(unparsedCommitHistory, function(arrayOfCommits) {
-      JSON.parse(arrayOfCommits).forEach(addCommitToHistoryObject);
+      if (Array.isArray(JSON.parse(arrayOfCommits))) {
+        JSON.parse(arrayOfCommits).forEach(addCommitToHistoryObject);
+      } else {
+        res.end('GO SEARCH FOR A REAL REPO, DUFUS');
+      }
     });
   }
 
@@ -46,7 +50,7 @@ var githubHandler = function(req, res) {
       date: commit.commit.committer.date
     };
 
-    options.path = '/repos/'+owner+'/'+repo+'/commits/' + commit.sha + '?' + qs.stringify(credentials);
+    options.path = '/repos/' + owner + '/' + repo + '/commits/' + commit.sha + '?' + qs.stringify(credentials);
 
     var getCommitDetails = https.request(options, function(unparsedFileArray) {
       addCommitFilesToHistoryObject(unparsedFileArray, commit);
@@ -58,7 +62,7 @@ var githubHandler = function(req, res) {
 
     parseBody(unparsedFileArray, function(parsedFileArray) {
       parsedFileArray = JSON.parse(parsedFileArray);
-      parsedFileArray.files.forEach(function(file,index){
+      parsedFileArray.files.forEach(function(file, index) {
         delete file.patch;
         parsedFileArray.files[index] = file;
       });
@@ -88,11 +92,11 @@ var githubHandler = function(req, res) {
 
 
 var sampleRequest = {
-  url:'/commit4/kat4/commit4'
+  url: '/commit4/kat4/commit4'
 };
 
 var sampleRes = {
-  writeHead: function(a,b){},
+  writeHead: function(a, b) {},
   end: console.log
 };
 
