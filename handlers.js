@@ -1,6 +1,5 @@
 var fs = require('fs');
 var index = fs.readFileSync('./views/index.html');
-var commits = fs.readFileSync('./views/commits.html');
 var githubHandler = require('./githubrequest.js');
 
 var handlers = module.exports = {};
