@@ -4,9 +4,9 @@ var env = require('env2')('./config.env');
 var renderHTML = require('./partials.js');
 
 var githubHandler = function(req, res) {
-  var query = req.url.split('/');
-  var owner = query[2];
-  var repo = query[3];
+  var urlArray = req.url.split('/');
+  var owner = urlArray[2];
+  var repo = urlArray[3];
   var credentials = {
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET
