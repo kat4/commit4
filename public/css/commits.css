@@ -1,0 +1,55 @@
+.circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: #333;
+  float: left;
+}
+.file:hover {
+  opacity: 0.8;
+  transition: opacity 0.3 ease-in-out;
+  -webkit-transition: opacity 0.3 ease-in-out;
+}
+.file {
+  cursor: pointer;
+  position: relative;
+  opacity: 0.2;
+  transition: opacity 0.3 ease-in-out;
+  -webkit-transition: opacity 0.3 ease-in-out;
+}
+.commit {
+  clear: both;
+  float: left;
+}
+.highlight {
+  background-color: rgba(34, 94, 200, 0.4);
+  opacity: 0.9;
+}
+.active {
+  background-color: rgba(34, 94, 200, 0.9);
+  opacity: 1;
+}
+.file-stats {
+  opacity: 0.5;
+  width: 100%;
+  display: none;
+}
+.active .file-stats{
+  display:block;
+}
+.file-stats>div {
+  position: absolute;
+  width: 50%;
+  bottom: 0;
+}
+.added {
+  left: 0;
+  background: green;
+}
+.deleted {
+  left: 50%;
+  background-color: red;
+}
