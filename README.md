@@ -22,6 +22,19 @@ The app will make an API call to github get the commit history and display each 
 Coloured dots will be highlighted when clicked to show the thread of changes to that file.
 See the wireframes below for an idea of how this will look.
 
+###Dependencies
+- env2
+
+###Dev dependencies
+- codeclimate-test-reporter
+- istanbul
+- shot
+- tape
+
+###Running locally
+
+If you want to run the app locally, clone the repo, run ```npm install``` to install the dependencies and then you can run the server with ```node server.js``` or if you have nodemon, ```nodemon server.js```. Your app should be running on localhost:7777.
+
 ####Wireframes
 
 ![Logo](https://files.gitter.im/kat4/fac6d1/T5nz/commit4.png)
